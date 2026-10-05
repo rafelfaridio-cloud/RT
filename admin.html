@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>مدیریت جزوه‌ها</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>📚 مدیریت جزوه‌ها</h1>
+        <button id="logoutButton">خروج</button>
+    </header>
+
+
+    <section class="stats">
+
+        <div class="stat">
+            <span>📚</span>
+            <strong id="courseCount">0</strong>
+            <small>درس</small>
+        </div>
+
+        <div class="stat">
+            <span>📄</span>
+            <strong id="noteCount">0</strong>
+            <small>جزوه</small>
+        </div>
+
+        <div class="stat">
+            <span>⬇️</span>
+            <strong id="downloadCount">0</strong>
+            <small>دانلود</small>
+        </div>
+
+    </section>
+
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <h2>جزوه‌ها</h2>
+
+            <button id="addNoteButton">
+                + افزودن جزوه
+            </button>
+
+        </div>
+
+
+        <div id="notesList">
+
+            <p class="empty">
+                هنوز جزوه‌ای اضافه نشده است.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Modal -->
+
+    <div
+        id="modal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <button
+                id="closeModal"
+                class="close"
+            >
+                ×
+            </button>
+
+            <h2>افزودن جزوه</h2>
+
+
+            <form id="noteForm">
+
+                <label>
+                    درس
+                </label>
+
+                <select id="course">
+                    <option value="">
+                        انتخاب درس
+                    </option>
+
+                    <option value="اندودانتیکس">
+                        اندودانتیکس
+                    </option>
+
+                    <option value="پروتز">
+                        پروتز
+                    </option>
+
+                    <option value="جراحی">
+                        جراحی
+                    </option>
+
+                    <option value="پریودنتولوژی">
+                        پریودنتولوژی
+                    </option>
+                </select>
+
+
+                <label>
+                    عنوان جزوه
+                </label>
+
+                <input
+                    id="title"
+                    type="text"
+                    placeholder="مثلاً جلسه اول"
+                    required
+                >
+
+
+                <label>
+                    توضیحات
+                </label>
+
+                <textarea
+                    id="description"
+                    placeholder="توضیحات جزوه..."
+                ></textarea>
+
+
+                <label>
+                    فایل PDF
+                </label>
+
+                <input
+                    id="pdf"
+                    type="file"
+                    accept=".pdf,application/pdf"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="submit"
+                >
+                    آپلود جزوه
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

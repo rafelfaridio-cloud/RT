@@ -1,33 +1,95 @@
-const tg = window.Telegram.WebApp;
+const addNoteButton =
+    document.getElementById("addNoteButton");
 
-// آماده‌سازی Mini App
-tg.ready();
+const modal =
+    document.getElementById("modal");
 
-// باز کردن در حالت تمام‌صفحه
-tg.expand();
+const closeModal =
+    document.getElementById("closeModal");
 
-const welcome = document.getElementById("welcome");
-const button = document.getElementById("helloButton");
-const counter = document.getElementById("counter");
+const noteForm =
+    document.getElementById("noteForm");
 
-let count = 0;
 
-// اطلاعات کاربر Telegram
-const user = tg.initDataUnsafe?.user;
+addNoteButton.addEventListener(
+    "click",
+    () => {
 
-if (user) {
-    welcome.textContent =
-        `سلام ${user.first_name}! 👋`;
-} else {
-    welcome.textContent =
-        "سلام! به اولین Mini App من خوش آمدی.";
-}
+        modal.classList.remove("hidden");
 
-button.addEventListener("click", () => {
+    }
+);
 
-    count++;
 
-    counter.textContent =
-        `تعداد کلیک: ${count}`;
+closeModal.addEventListener(
+    "click",
+    () => {
 
-});
+        modal.classList.add("hidden");
+
+    }
+);
+
+
+noteForm.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
+
+
+        const course =
+            document.getElementById("course").value;
+
+        const title =
+            document.getElementById("title").value;
+
+        const description =
+            document.getElementById("description").value;
+
+        const pdf =
+            document.getElementById("pdf").files[0];
+
+
+        if (!course || !title || !pdf) {
+
+            alert(
+                "لطفاً اطلاعات را کامل کنید."
+            );
+
+            return;
+        }
+
+
+        if (
+            pdf.type !==
+            "application/pdf"
+        ) {
+
+            alert(
+                "فقط فایل PDF مجاز است."
+            );
+
+            return;
+        }
+
+
+        console.log({
+            course,
+            title,
+            description,
+            pdf
+        });
+
+
+        alert(
+            "جزوه آماده ارسال به سرور است."
+        );
+
+
+        noteForm.reset();
+
+        modal.classList.add("hidden");
+
+    }
+);
